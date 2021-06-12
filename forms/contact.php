@@ -9,7 +9,8 @@
   // Replace contact@example.com with your real receiving email address
   $receiving_email_address = 'somaghoshofficial97@gmail.com';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
+  
+  /*if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
     include( $php_email_form );
   } else {
     die( 'Unable to load the "PHP Email Form" Library!');
@@ -31,11 +32,25 @@
     'password' => 'pass',
     'port' => '587'
   );
-  */
+  
 
   $contact->add_message( $_POST['name'], 'From');
   $contact->add_message( $_POST['email'], 'Email');
   $contact->add_message( $_POST['message'], 'Message', 10);
 
-  echo $contact->send();
+  echo $contact->send();*/
+
+
+
+  if(isset($_POST['submit'])){
+    $to_email = $receiving_email_address;
+    $from_name = $_POST['name'];
+    $from_email = $_POST['email'];
+    $from_subject = $_POST['subject'];
+    $message = $_POST['message'];
+    $headers = "From : ".$from_name;
+    $txt = "You have received a mail from ".$from_name". \n\n".$message;
+    mail($to_email, $from_subject, $txt, $headers);
+    //header("Location : index.php?mailsend");
+  }
 ?>
