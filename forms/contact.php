@@ -42,7 +42,7 @@
 
 
 
-  if(isset($_POST['submit'])){
+ / if(isset($_POST['submit'])){
     $to_email = $receiving_email_address;
     $from_name = $_POST['name'];
     $from_email = $_POST['email'];
